@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Beta Version App</string>
+    <string name="app_name">Course Work App</string>
+    <string name="income">ДОХОД</string>
+    <string name="expense">РАСХОД</string>
 </resources>

@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fragment_transaction_background">#4B4B4B</color>
+
+    <color name="green_button">#3B6737</color>
+    <color name="header">#3C8F34</color>
+    <color name="red_button">#7D2B2B</color>
+    <color name="grey">#696969</color>
+    <color name="main_bg">#292929</color>
+    <color name="input_field">#3D3D3D</color>
+    <color name="input_field_inner_shadow">#222222</color>
+    <color name="green_text">#097300</color>
+    <color name="red_text">#D22727</color>
+    <color name="list_item_background">#898989</color>
+    <color name="dim_view">#90FFFFFF</color>
+    <color name="transluent">#00FFFFFF</color>
 </resources>
+
