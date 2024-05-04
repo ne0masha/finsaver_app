@@ -10,15 +10,15 @@ import kotlinx.coroutines.launch
 class TransactionsListViewModel(
     private val repository: TransactionsListRepository
 ): ViewModel() {
-    fun upsert(transaction: Transaction) = CoroutineScope(Dispatchers.Main).launch {
+    fun upsert(transaction: Transaction) = CoroutineScope(Dispatchers.IO).launch {
         repository.upsert(transaction)
     }
 
-    fun delete(transaction: Transaction) = CoroutineScope(Dispatchers.Main).launch {
+    fun delete(transaction: Transaction) = CoroutineScope(Dispatchers.IO).launch {
         repository.delete(transaction)
     }
 
-    fun getTransactionById(transactionId: Long) = CoroutineScope(Dispatchers.Main).launch {
+    fun getTransactionById(transactionId: Long) = CoroutineScope(Dispatchers.IO).launch {
         repository.getTransactionById(transactionId)
     }
 
