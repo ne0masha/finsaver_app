@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
+import com.example.betaversionapp.data.db.entities.Transaction
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -13,12 +14,12 @@ interface TransactionDao {
     @Delete
     suspend fun deleteTransaction(transaction: Transaction)
 
-    @Query("SELECT * FROM `Transaction` WHERE id = :transactionId")
+    @Query("SELECT * FROM transactions WHERE id = :transactionId")
     suspend fun getTransactionById(transactionId: Long): Transaction?
 
-    @Query("SELECT COALESCE(SUM(CASE WHEN isIncome = 1 THEN amount ELSE -amount END), 0) FROM `Transaction`")
+    @Query("SELECT COALESCE(SUM(CASE WHEN isIncome = 1 THEN amount ELSE -amount END), 0) FROM transactions")
     fun getTotalAmount(): Flow<Long>
 
-    @Query("SELECT * FROM `Transaction` ORDER BY date DESC")
+    @Query("SELECT * FROM transactions ORDER BY date DESC")
     fun getAllTransactions(): Flow<List<Transaction>>
 }
