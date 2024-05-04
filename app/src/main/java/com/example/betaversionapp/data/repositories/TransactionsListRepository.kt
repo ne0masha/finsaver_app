@@ -3,7 +3,7 @@ package com.example.betaversionapp.data.repositories
 import com.example.betaversionapp.data.db.AppDatabase
 import com.example.betaversionapp.data.db.entities.Transaction
 
-class AppRepository(
+class TransactionsListRepository(
     private val db: AppDatabase
 ) {
     suspend fun upsert(transaction: Transaction) = db.getTransactionDao().upsert(transaction)
