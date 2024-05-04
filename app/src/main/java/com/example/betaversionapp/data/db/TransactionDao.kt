@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TransactionDao {
     @Upsert
-    suspend fun upsertTransaction(transaction: Transaction)
+    suspend fun upsert(transaction: Transaction)
     @Delete
-    suspend fun deleteTransaction(transaction: Transaction)
+    suspend fun delete(transaction: Transaction)
 
     @Query("SELECT * FROM transactions WHERE id = :transactionId")
     suspend fun getTransactionById(transactionId: Long): Transaction?
