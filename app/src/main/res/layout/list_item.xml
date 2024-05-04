@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- list_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/list_item_background"
+    android:paddingStart="16dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:layout_marginBottom="10dp"
+    >
+
+    <!--Контейнер для записи-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <!-- Date TextView -->
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            />
+
+        <!-- Amount TextView -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--"+"/"-"-->
+            <TextView
+                android:id="@+id/textViewIsIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ "
+                android:textSize="16sp"/>
+
+            <!--Сумма дохода/расхода в операции-->
+            <TextView
+                android:id="@+id/textViewAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--Удаление-->
+    <ImageButton
+        android:id="@+id/buttonDelete"
+        android:contentDescription="Delete"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/img_trashbin"
+        android:scaleType="centerCrop"
+        android:layout_gravity="left"
+        android:layout_marginEnd="10dp"/>
+
+</LinearLayout>
+
