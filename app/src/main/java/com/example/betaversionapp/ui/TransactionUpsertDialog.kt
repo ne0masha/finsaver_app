@@ -39,6 +39,9 @@ class TransactionUpsertDialog(
         val cancelButton = findViewById<Button>(R.id.cancel_button)
         val saveButton = findViewById<Button>(R.id.save_button)
 
+        // Заполнение полей данными транзакции, если она передана
+        transaction?.let { fillFieldsWithData(it) }
+
         if (transaction == null) {
             val calendar = Calendar.getInstance()
             val initialYear = calendar.get(Calendar.YEAR)
@@ -74,9 +77,6 @@ class TransactionUpsertDialog(
                 }
             }
         })
-
-        // Заполнение полей данными транзакции, если она передана
-        transaction?.let { fillFieldsWithData(it) }
 
         dateInput?.setOnClickListener { showDatePicker() }
 
