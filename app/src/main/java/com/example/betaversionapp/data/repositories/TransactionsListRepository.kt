@@ -16,4 +16,7 @@ class TransactionsListRepository(
 
     fun getAllTransactions() = db.getTransactionDao().getAllTransactions()
 
+    fun getTransactionsByCategory(categoryId: Long) = db.getTransactionDao().getTransactionsByCategory(categoryId)
+
+    suspend fun getCategoryById(categoryId: Long) = db.getCategoryDao().getCategoryById(categoryId)
 }
