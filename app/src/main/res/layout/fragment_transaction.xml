@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
+    android:paddingTop="20dp"
     android:paddingBottom="20dp"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
@@ -24,9 +24,10 @@
         android:text="@string/income"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
         android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_weight="2"
         >
     </TextView>
 
@@ -40,7 +41,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/HeaderFragment"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -69,11 +71,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amount_container"
+        android:layout_marginTop="20dp"
         app:layout_constraintVertical_chainStyle="spread_inside"
         tools:ignore="MissingConstraints">
 
@@ -92,11 +95,65 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_background_input_field"
             android:focusable="false"
-            android:gravity="start"
-            android:inputType="text"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:inputType="date"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/amount_input" />
+    </LinearLayout>
+
+    <!--Категория контейнер-->
+    <LinearLayout
+        android:id="@+id/Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginTop="20dp"
+
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="КАТЕГОРИЯ"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
+
+        <!--Контейнер для кнопки категории (иконка+текст)-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/iconCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/your_image"
+                android:clickable="true"
+                android:background="@drawable/image_button_selector" />
+
+
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Выбранная категория"
+                android:textColor="@color/white"
+                android:onClick="textClicked" />
+        </LinearLayout>
+
+
+
+
+
     </LinearLayout>
 
 
@@ -110,7 +167,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/Category"
+        android:layout_marginTop="40dp">
 
         <Button
             android:id="@+id/cancel_button"
