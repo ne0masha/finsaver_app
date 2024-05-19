@@ -8,10 +8,13 @@ import androidx.room.PrimaryKey
 data class Transaction(
     @ColumnInfo(name = "is_income")
     var isIncome: Boolean, // True - доход, False - расход
+
     @ColumnInfo(name = "category_id")
-    var categoryId: Int,
+    var categoryId: Long,
+
     @ColumnInfo(name = "date_Long")
     var date: Long,
+
     @ColumnInfo(name = "amount")
     var amount: Long,
     // сумма хранится в копейках, при отображении делится на 100
@@ -19,4 +22,4 @@ data class Transaction(
 
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0
-    )
+)

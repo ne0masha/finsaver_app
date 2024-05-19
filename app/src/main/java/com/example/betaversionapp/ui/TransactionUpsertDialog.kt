@@ -15,9 +15,6 @@ import com.example.betaversionapp.data.db.DateConverter
 import com.example.betaversionapp.data.db.entities.Transaction
 import java.util.Calendar
 
-// TODO: переделать диалог так, чтобы он не только создавал, но и обновлял старые транзакции
-// для этого можно добавить транзакцию как доп параметр (тр-я или null)
-
 class TransactionUpsertDialog(
     context: Context,
     private var upsertDialogListener: UpsertDialogListener,

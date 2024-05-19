@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.betaversionapp.R
-import com.example.betaversionapp.R.id.textViewAmount
 import com.example.betaversionapp.data.db.AppDatabase
 import com.example.betaversionapp.data.db.entities.Transaction
 import com.example.betaversionapp.data.repositories.TransactionsListRepository
@@ -37,11 +36,11 @@ class TransactionsListActivity : AppCompatActivity() {
         operationsRecyclerView.adapter = adapter
 
         val totalAmountTextView = findViewById<TextView>(R.id.totalSummaTextView)
-        viewModel.getTotalAmount().observe(this) { totalAmount ->
+        viewModel.getTotalAmount()?.observe(this) { totalAmount ->
             totalAmountTextView.text = "${String.format("%.2f", totalAmount / 100.0)} $"
         }
 
-        viewModel.getAllTransactions().observe(this) { transactions ->
+        viewModel.getAllTransactions()?.observe(this) { transactions ->
             adapter.items = transactions
             adapter.notifyDataSetChanged()
         }
