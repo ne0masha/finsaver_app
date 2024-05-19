@@ -7,13 +7,13 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "transactions")
 data class Transaction(
     @ColumnInfo(name = "is_income")
-    val isIncome: Boolean, // True - доход, False - расход
+    var isIncome: Boolean, // True - доход, False - расход
     @ColumnInfo(name = "category_id")
-    val categoryId: Int,
+    var categoryId: Int,
     @ColumnInfo(name = "date_Long")
-    val date: Long,
+    var date: Long,
     @ColumnInfo(name = "amount")
-    val amount: Long,
+    var amount: Long,
     // сумма хранится в копейках, при отображении делится на 100
     // Нужно, чтобы не получались тысячные доли валюты.
 

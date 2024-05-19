@@ -55,6 +55,7 @@ class TransactionsListActivity : AppCompatActivity() {
                         viewModel.upsert(item)
                     }
                 },
+                null,
                 false
             ).show()
         }
@@ -67,6 +68,7 @@ class TransactionsListActivity : AppCompatActivity() {
                         viewModel.upsert(item)
                     }
                 },
+                null,
                 true
             ).show()
         }

@@ -42,6 +42,7 @@ class TransactionsListAdapter(
                         viewModel.upsert(curTransactionItem)
                     }
                 },
+                curTransactionItem,
                 curTransactionItem.isIncome
             ).show()
         }
