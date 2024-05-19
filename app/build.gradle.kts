@@ -38,6 +38,12 @@ android {
     buildFeatures {
         viewBinding = true
     } // binding для MVVM
+
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
 }
 
 dependencies {

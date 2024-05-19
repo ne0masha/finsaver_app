@@ -16,8 +16,7 @@ data class Transaction(
     val amount: Long,
     // сумма хранится в копейках, при отображении делится на 100
     // Нужно, чтобы не получались тысячные доли валюты.
-) {
 
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null
-}
+    val id: Long = 0
+    )

@@ -1,5 +1,6 @@
 package com.example.betaversionapp.data.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
@@ -17,9 +18,9 @@ interface TransactionDao {
     @Query("SELECT * FROM transactions WHERE id = :transactionId")
     suspend fun getTransactionById(transactionId: Long): Transaction?
 
-    @Query("SELECT COALESCE(SUM(CASE WHEN isIncome = 1 THEN amount ELSE -amount END), 0) FROM transactions")
-    fun getTotalAmount(): Flow<Long>
+    @Query("SELECT COALESCE(SUM(CASE WHEN is_income = 1 THEN amount ELSE -amount END), 0) FROM transactions")
+    fun getTotalAmount(): LiveData<Long>
 
-    @Query("SELECT * FROM transactions ORDER BY date DESC")
-    fun getAllTransactions(): Flow<List<Transaction>>
+    @Query("SELECT * FROM transactions ORDER BY date_Long DESC")
+    fun getAllTransactions(): LiveData<List<Transaction>>
 }
