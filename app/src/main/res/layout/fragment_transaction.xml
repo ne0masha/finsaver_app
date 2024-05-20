@@ -127,18 +127,22 @@
 
         <!--Контейнер для кнопки категории (иконка+текст)-->
         <LinearLayout
+            android:id="@+id/CategoryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
 
+            <!--Иконка-->
             <ImageView
                 android:id="@+id/iconCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/your_image"
-                android:clickable="true"
-                android:background="@drawable/image_button_selector" />
+                app:srcCompat="@drawable/question_mark"
+
+                android:scaleType="centerCrop"
+                android:layout_gravity="left"/>
 
 
             <TextView
