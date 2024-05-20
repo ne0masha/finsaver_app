@@ -27,7 +27,6 @@
         app:layout_constraintVertical_bias="0.5"
         android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintVertical_weight="2"
         >
     </TextView>
 
@@ -153,10 +152,6 @@
                 android:textColor="@color/white"
                 android:onClick="textClicked" />
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 

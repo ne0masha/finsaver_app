@@ -129,6 +129,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/red_button"
                 android:text="@string/expense"
+                android:textColor="@color/white"
                 />
 
             <Button
@@ -138,7 +139,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/green_button"
-                android:text="@string/income" />
+                android:text="@string/income"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
 
