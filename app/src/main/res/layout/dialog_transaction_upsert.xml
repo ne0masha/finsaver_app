@@ -27,7 +27,6 @@
         app:layout_constraintVertical_bias="0.5"
         android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintVertical_weight="2"
         >
     </TextView>
 
@@ -127,19 +126,22 @@
 
         <!--Контейнер для кнопки категории (иконка+текст)-->
         <LinearLayout
+            android:id="@+id/CategoryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/iconCategory"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="10dp"-->
-<!--                android:src="@drawable/your_image"-->
-<!--                android:clickable="true"-->
-<!--                android:background="@drawable/image_button_selector" />-->
+            <!--Иконка-->
+            <ImageView
+                android:id="@+id/iconCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/question_mark"
 
+                android:scaleType="centerCrop"
+                android:layout_gravity="left"/>
 
             <TextView
                 android:id="@+id/textCategory"
@@ -149,10 +151,6 @@
                 android:textColor="@color/white"
                 android:onClick="textClicked" />
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 

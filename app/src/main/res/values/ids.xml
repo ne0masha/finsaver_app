@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <item name="clothes" type="id"/>
+
+    <item name="entertainments" type="id"/>
+
+    <item name="gifts" type="id"/>
+
+    <item name="health" type="id"/>
+
+    <item name="home" type="id"/>
+
+    <item name="home_appliances" type="id"/>
+
+    <item name="internet_services" type="id"/>
+
+    <item name="investment" type="id"/>
+
+    <item name="products" type="id"/>
+
+    <item name="question_mark" type="id"/>
+
+    <item name="restaurant" type="id"/>
+
+    <item name="salary" type="id"/>
+
+    <item name="transport" type="id"/>
+
+    <item name="travelling" type="id"/>
+
+</resources>

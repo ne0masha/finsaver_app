@@ -53,6 +53,31 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!--Категория-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/question_mark" />
+
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_vertical"/>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -64,10 +89,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        app:srcCompat="@drawable/ic_delete"
+        app:srcCompat="@drawable/bin"
         android:scaleType="centerCrop"
         android:layout_gravity="left"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/transluent"/>
 
 </LinearLayout>
 

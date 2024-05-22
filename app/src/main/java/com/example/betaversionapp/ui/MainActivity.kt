@@ -17,9 +17,10 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-
         loadFragment(TransactionsListFragment()) // Load the default fragment
+
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        navView.selectedItemId = R.id.list_screen_btn
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list_screen_btn -> {
@@ -27,8 +28,7 @@ class MainActivity: AppCompatActivity() {
                     true
                 }
                 R.id.pie_screen_btn -> {
-                    loadFragment(PieFragment())
-                    Log.d("btn", "pie should be opened")
+                    loadFragment(PieChartFragment())
                     true
                 }
                 R.id.plot_screen_btn -> {
