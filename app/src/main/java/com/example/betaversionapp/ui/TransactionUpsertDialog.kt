@@ -26,7 +26,7 @@ class TransactionUpsertDialog(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_transaction)
+        setContentView(R.layout.dialog_transaction_upsert)
 
         val headerFragment = findViewById<TextView>(R.id.HeaderFragment)
         headerFragment?.text = if (isIncome) "ДОХОД" else "РАСХОД"

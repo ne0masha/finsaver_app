@@ -21,7 +21,7 @@ class TransactionsListAdapter(
 ): RecyclerView.Adapter<TransactionsListAdapter.TransactionsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
         return TransactionsViewHolder(view)
     }
 
