@@ -4,17 +4,21 @@
     <color name="white">#FFFFFFFF</color>
     <color name="fragment_transaction_background">#4B4B4B</color>
 
-    <color name="green_button">#3B6737</color>
+    <color name="green_button">#10a103</color>
     <color name="header">#3C8F34</color>
-    <color name="red_button">#7D2B2B</color>
+    <color name="red_button">#ff3021</color>
     <color name="grey">#696969</color>
     <color name="main_bg">#292929</color>
     <color name="input_field">#3D3D3D</color>
     <color name="input_field_inner_shadow">#222222</color>
     <color name="green_text">#097300</color>
-    <color name="red_text">#D22727</color>
+    <color name="red_text">#ff3021</color>
     <color name="list_item_background">#898989</color>
     <color name="dim_view">#90FFFFFF</color>
     <color name="transluent">#00FFFFFF</color>
+    <color name="bottom_navigation_icon_color">#FFFFFF</color>
+    <color name="bottom_navigation_background">#1F1F1F</color>
+    <color name="selected_color">#a3a3a3</color>
+
 </resources>
 
