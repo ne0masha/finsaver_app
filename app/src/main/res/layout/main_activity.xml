@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/generalContainer"
-
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_bg"
@@ -20,7 +20,8 @@
             android:id="@+id/totalBalanceContainer"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:orientation="vertical"
             app:cardBackgroundColor="@color/header"
             app:cardCornerRadius="16dp"
@@ -54,31 +55,32 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Контейнер для кнопок -->
-
+        <!-- RecyclerView -->
         <FrameLayout
             android:id="@+id/fragment_holder"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            app:layout_constraintBottom_toTopOf="@+id/addButtonsContainer"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/totalBalanceContainer">
+            app:layout_constraintTop_toBottomOf="@+id/totalBalanceContainer"
+            app:layout_constraintBottom_toTopOf="@+id/addButtonsContainer">
         </FrameLayout>
 
+        <!-- Контейнер для кнопок -->
         <LinearLayout
             android:id="@+id/addButtonsContainer"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toStartOf="@+id/bottomNavigationView"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toEndOf="@+id/bottomNavigationView">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <Button
                 android:id="@+id/addExpenseButton"
