@@ -15,7 +15,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
 
         <!--Заголовок для истории операций-->
         <LinearLayout
@@ -44,9 +46,7 @@
             android:id="@+id/operationsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="40dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/addButtonsContainer"
             app:layout_constraintEnd_toEndOf="parent"

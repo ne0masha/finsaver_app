@@ -9,6 +9,7 @@
         android:id="@+id/list_screen_btn"
         android:title="Home"
         android:icon="@drawable/rounded_add_home_24"
+
         />
     <item
         android:id="@+id/plot_screen_btn"
