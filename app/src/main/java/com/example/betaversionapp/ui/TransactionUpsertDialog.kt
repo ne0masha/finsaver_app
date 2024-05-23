@@ -13,9 +13,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.setFragmentResultListener
 import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.DateConverter
+import com.example.betaversionapp.data.db.ResourcesUtil
+import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
 import java.util.Calendar
 
@@ -24,13 +28,23 @@ class TransactionUpsertDialog(
     private var upsertDialogListener: UpsertDialogListener,
     private var transaction: Transaction?,
     private var isIncome: Boolean
-): AppCompatDialog(activity) {
+): AppCompatDialog(activity), CategorySelectionDialog.CategorySelectionListener {
     private var dateInput: EditText? = null
     private var amountInput: EditText? = null
+    private var selectedCategoryId: Long? = null // Создаем поле для хранения ID выбранной категории
     private var categoryText: TextView? = null
     private var categoryImage: ImageView? = null
     //private val appDelegate = context.applicationContext as? AppDelegate
     private val activityContext = activity
+
+    override fun onCategorySelected(category: Category) {
+        // Сохраняем ID выбранной категории
+        selectedCategoryId = category.id
+        categoryText?.text = category.name
+        val iconId = ResourcesUtil.getResourceIdByName(activityContext, category.icon)
+        val drawable = ContextCompat.getDrawable(activityContext, iconId)
+        categoryImage?.setImageDrawable(drawable)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_transaction_upsert)
@@ -50,6 +64,8 @@ class TransactionUpsertDialog(
         categoryButton?.setOnClickListener {
             val dialog = CategorySelectionDialog.newInstance(isIncome)
             dialog.show(activityContext.supportFragmentManager, "CategorySelectionDialog")
+            activityContext.supportFragmentManager.executePendingTransactions() // Обязательное безопасное ожидание завершения транзакции
+            dialog.listener = this // Назначить слушателя
 
         }
 

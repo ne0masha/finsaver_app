@@ -23,7 +23,7 @@ class CategorySelectionDialog : DialogFragment() {
         fun onCategorySelected(category: Category)
     }
 
-    private var listener: CategorySelectionListener? = null
+    var listener: CategorySelectionListener? = null
     private var isIncome: Boolean = false
     private lateinit var repository: TransactionsListRepository
 
