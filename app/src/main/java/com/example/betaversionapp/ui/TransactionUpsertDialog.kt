@@ -1,35 +1,36 @@
 package com.example.betaversionapp.ui
 
 import android.app.DatePickerDialog
-import android.content.Context
-import android.media.Image
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
+import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.DateConverter
 import com.example.betaversionapp.data.db.entities.Transaction
 import java.util.Calendar
 
 class TransactionUpsertDialog(
-    context: Context,
+    activity: AppCompatActivity,
     private var upsertDialogListener: UpsertDialogListener,
     private var transaction: Transaction?,
     private var isIncome: Boolean
-): AppCompatDialog(context) {
+): AppCompatDialog(activity) {
     private var dateInput: EditText? = null
     private var amountInput: EditText? = null
-    private var categoryText: EditText? = null
+    private var categoryText: TextView? = null
     private var categoryImage: ImageView? = null
-
+    private val appDelegate = context.applicationContext as? AppDelegate
+    private val activityContext = activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_transaction_upsert)
@@ -46,7 +47,14 @@ class TransactionUpsertDialog(
         val saveButton = findViewById<Button>(R.id.save_button)
         val categoryButton = findViewById<LinearLayout>(R.id.CategoryButton)
 
-        categoryButton?.setOnClickListener {  } // fill this with code
+        categoryButton?.setOnClickListener {
+            Log.d("1", "layout clicked!")
+            Log.d("2", "Context is App... ")
+            val dialog = CategorySelectionDialog.newInstance(isIncome)
+            Log.d("3", "Dialog was created!")
+            dialog.show(activityContext.supportFragmentManager, "CategorySelectionDialog")
+        }
+
 
         // Заполнение полей данными транзакции, если она передана
         transaction?.let { fillFieldsWithData(it) }
@@ -122,9 +130,6 @@ class TransactionUpsertDialog(
             cancel()
         }
     }
-
-
-
     private fun fillFieldsWithData(transaction: Transaction) {
         dateInput?.setText(DateConverter.longToDate(transaction.date))
         amountInput?.setText(String.format("%.2f", transaction.amount / 100.0))

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "755e07b4c2fd6c14df86f5ed563f07f6",
+    "identityHash": "4cb010f333207e4b0f9797e0e039b87a",
     "entities": [
       {
         "tableName": "transactions",
@@ -50,11 +50,17 @@
       },
       {
         "tableName": "categories",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `icon` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `is_income` INTEGER NOT NULL, `name` TEXT NOT NULL, `icon` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isIncome",
+            "columnName": "is_income",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -84,7 +90,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '755e07b4c2fd6c14df86f5ed563f07f6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4cb010f333207e4b0f9797e0e039b87a')"
     ]
   }
 }

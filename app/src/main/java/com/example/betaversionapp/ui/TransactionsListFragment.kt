@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,9 +24,10 @@ class TransactionsListFragment : Fragment(R.layout.fragment_list) {
         val factory = TransactionsListViewModelFactory(appDelegate.repository)
         val viewModel = ViewModelProvider(this, factory)[TransactionsListViewModel::class.java]
 
-        val adapter = TransactionsListAdapter(listOf(), viewModel)
-        val operationsRecyclerView = view.findViewById<RecyclerView>(R.id.operationsRecyclerView)
+        // Use requireActivity() to get the parent activity
+        val adapter = TransactionsListAdapter(requireActivity() as AppCompatActivity, emptyList(), viewModel)
 
+        val operationsRecyclerView = view.findViewById<RecyclerView>(R.id.operationsRecyclerView)
         operationsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         operationsRecyclerView.adapter = adapter
 
@@ -33,6 +35,5 @@ class TransactionsListFragment : Fragment(R.layout.fragment_list) {
             adapter.items = transactions
             adapter.notifyDataSetChanged()
         }
-
     }
 }

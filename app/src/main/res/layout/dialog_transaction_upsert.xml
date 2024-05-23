@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:text="Выбранная категория"
                 android:textColor="@color/white"
-                android:onClick="textClicked" />
+                />
         </LinearLayout>
 
     </LinearLayout>

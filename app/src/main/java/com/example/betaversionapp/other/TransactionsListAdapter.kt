@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.betaversionapp.R
@@ -16,8 +17,9 @@ import com.example.betaversionapp.ui.TransactionsListViewModel
 import com.example.betaversionapp.ui.UpsertDialogListener
 
 class TransactionsListAdapter(
+    private val activity: AppCompatActivity, // Updated to receive AppCompatActivity
     var items: List<Transaction>,
-    private val viewModel: TransactionsListViewModel,
+    private val viewModel: TransactionsListViewModel
 ): RecyclerView.Adapter<TransactionsListAdapter.TransactionsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionsViewHolder {
@@ -34,7 +36,7 @@ class TransactionsListAdapter(
 
         holder.itemView.setOnClickListener {
             TransactionUpsertDialog(
-                holder.itemView.context,
+                activity, // Updated to use activity context
                 object : UpsertDialogListener {
                     override fun onAddButtonClicked(item: Transaction) {
                         viewModel.upsert(curTransactionItem)
@@ -55,8 +57,8 @@ class TransactionsListAdapter(
         }
 
         textViewDate.text = DateConverter.longToDate(curTransactionItem.date)
-
         textViewAmount.text = String.format("%.2f", curTransactionItem.amount / 100.0)
+
         if (curTransactionItem.isIncome) {
             textViewPlusMinus.text = "+ "
             textViewPlusMinus.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.green_text))
@@ -68,5 +70,5 @@ class TransactionsListAdapter(
         }
     }
 
-    inner class TransactionsViewHolder (itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class TransactionsViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView)
 }
