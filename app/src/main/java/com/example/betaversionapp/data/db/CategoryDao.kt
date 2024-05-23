@@ -8,7 +8,7 @@ import com.example.betaversionapp.data.db.entities.Category
 @Dao
 interface CategoryDao {
     @Insert
-    suspend fun insertCategory(category: Category)
+    fun insertCategory(category: Category)
 
 //    @Query("SELECT * FROM categories")
 //    fun getAllCategories(): LiveData<List<Category>>
