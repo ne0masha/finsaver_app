@@ -23,9 +23,11 @@ abstract class AppDatabase : RoomDatabase() {
         operator fun invoke(context: Context) = instance ?: kotlin.synchronized(LOCK) {
             instance ?: createDatabase(context).also { db ->
                 instance = db
+
                 db.getCategoryDao().insertCategory(Category(1, true, "Зарплата", R.id.salary))
                 db.getCategoryDao().insertCategory(Category(2, true, "Инвестиции", R.id.investment))
-                db.getCategoryDao().insertCategory(Category(3, true,"Неожиданные доходы", R.id.))
+                db.getCategoryDao().insertCategory(Category(3, true,"Неожиданные доходы", R.id.windfall))
+
                 db.getCategoryDao().insertCategory(Category(4, false, "Развлечения", R.id.entertainments))
                 db.getCategoryDao().insertCategory(Category(5, false, "Подарки", R.id.gifts))
                 db.getCategoryDao().insertCategory(Category(6, false, "Здоровье", R.id.health))

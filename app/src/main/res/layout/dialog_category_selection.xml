@@ -31,6 +31,7 @@
 
     <!--Сетка категорий-->
     <GridView
+        android:id="@+id/categories_grid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/HeaderCategory"
@@ -39,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        android:numColumns="3"
+        android:numColumns="4"
         android:horizontalSpacing="20dp"
         android:verticalSpacing="20dp"
         >

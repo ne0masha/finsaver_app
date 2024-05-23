@@ -1,6 +1,7 @@
 package com.example.betaversionapp.data.repositories
 
 import com.example.betaversionapp.data.db.AppDatabase
+import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
 
 class TransactionsListRepository(
@@ -19,4 +20,6 @@ class TransactionsListRepository(
     fun getTransactionsByCategory(categoryId: Long) = db.getTransactionDao().getTransactionsByCategory(categoryId)
 
     suspend fun getCategoryById(categoryId: Long) = db.getCategoryDao().getCategoryById(categoryId)
+
+    suspend fun getCategoryByIsIncome(isIncome: Boolean) = db.getCategoryDao().getCategoryByIsIncome(isIncome)
 }

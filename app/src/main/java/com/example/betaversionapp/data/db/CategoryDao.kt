@@ -10,8 +10,8 @@ interface CategoryDao {
     @Insert
     fun insertCategory(category: Category)
 
-//    @Query("SELECT * FROM categories")
-//    fun getAllCategories(): LiveData<List<Category>>
+    @Query("SELECT * FROM categories WHERE is_income = :isIncome")
+    suspend fun getCategoryByIsIncome(isIncome: Boolean): List<Category>
 
     @Query("SELECT * FROM categories WHERE id = :categoryId")
     suspend fun getCategoryById(categoryId: Long): Category?

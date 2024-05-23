@@ -2,11 +2,15 @@ package com.example.betaversionapp.ui
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.media.Image
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
@@ -23,6 +27,8 @@ class TransactionUpsertDialog(
 ): AppCompatDialog(context) {
     private var dateInput: EditText? = null
     private var amountInput: EditText? = null
+    private var categoryText: EditText? = null
+    private var categoryImage: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +39,14 @@ class TransactionUpsertDialog(
 
         dateInput = findViewById(R.id.date_input)
         amountInput = findViewById(R.id.amount_input)
+        categoryText = findViewById(R.id.textCategory)
+        categoryImage = findViewById(R.id.iconCategory)
+
         val cancelButton = findViewById<Button>(R.id.cancel_button)
         val saveButton = findViewById<Button>(R.id.save_button)
+        val categoryButton = findViewById<LinearLayout>(R.id.CategoryButton)
+
+        categoryButton?.setOnClickListener {  } // fill this with code
 
         // Заполнение полей данными транзакции, если она передана
         transaction?.let { fillFieldsWithData(it) }
@@ -46,8 +58,11 @@ class TransactionUpsertDialog(
             val initialDay = calendar.get(Calendar.DAY_OF_MONTH)
             val initialDate = "$initialDay.${initialMonth + 1}.$initialYear"
             dateInput?.setText(initialDate)
-        }
 
+            categoryText?.setText("Выберите категорию")
+            categoryImage?.setImageResource(R.drawable.question_mark)
+
+        }
 
 
         amountInput?.addTextChangedListener(/* watcher = */ object : TextWatcher {
@@ -107,6 +122,8 @@ class TransactionUpsertDialog(
             cancel()
         }
     }
+
+
 
     private fun fillFieldsWithData(transaction: Transaction) {
         dateInput?.setText(DateConverter.longToDate(transaction.date))
