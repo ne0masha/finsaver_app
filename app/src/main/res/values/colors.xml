@@ -19,6 +19,6 @@
     <color name="bottom_navigation_icon_color">#FFFFFF</color>
     <color name="bottom_navigation_background">#1F1F1F</color>
     <color name="selected_color">#a3a3a3</color>
-
+    <color name="selected_category_color">#151515</color>
 </resources>
 
