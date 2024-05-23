@@ -29,7 +29,7 @@ class TransactionUpsertDialog(
     private var amountInput: EditText? = null
     private var categoryText: TextView? = null
     private var categoryImage: ImageView? = null
-    private val appDelegate = context.applicationContext as? AppDelegate
+    //private val appDelegate = context.applicationContext as? AppDelegate
     private val activityContext = activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,11 +48,9 @@ class TransactionUpsertDialog(
         val categoryButton = findViewById<LinearLayout>(R.id.CategoryButton)
 
         categoryButton?.setOnClickListener {
-            Log.d("1", "layout clicked!")
-            Log.d("2", "Context is App... ")
             val dialog = CategorySelectionDialog.newInstance(isIncome)
-            Log.d("3", "Dialog was created!")
             dialog.show(activityContext.supportFragmentManager, "CategorySelectionDialog")
+
         }
 
 

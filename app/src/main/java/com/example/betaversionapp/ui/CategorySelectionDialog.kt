@@ -2,6 +2,7 @@ package com.example.betaversionapp.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,12 +49,13 @@ class CategorySelectionDialog : DialogFragment() {
 
         lifecycleScope.launch {
             val categories = repository.getCategoryByIsIncome(isIncome)
+            Log.d("10", "${categories.size}")
             gridView.adapter = CategoryGridAdapter(requireContext(), categories)
 
             gridView.setOnItemClickListener { _, _, position, _ ->
                 val selectedCategory = categories[position]
                 listener?.onCategorySelected(selectedCategory)
-                dismiss()
+                //dismiss()
             }
         }
 

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.example.betaversionapp.R
+import com.example.betaversionapp.data.db.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.repositories.TransactionsListRepository
 
@@ -29,7 +31,10 @@ class CategoryGridAdapter(
         val categoryIcon = view.findViewById<ImageView>(R.id.category_icon)
         val categoryName = view.findViewById<TextView>(R.id.category_name)
 
-        categoryIcon.setImageResource(category.icon)
+        val iconId = ResourcesUtil.getResourceIdByName(context, category.icon)
+        val drawable = ContextCompat.getDrawable(context, iconId)
+
+        categoryIcon.setImageDrawable(drawable)
         categoryName.text = category.name
 
         return view

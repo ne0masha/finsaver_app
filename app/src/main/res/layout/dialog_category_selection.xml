@@ -33,7 +33,7 @@
     <GridView
         android:id="@+id/categories_grid"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/HeaderCategory"
         app:layout_constraintBottom_toTopOf="@+id/SaveCategoryButton"
         app:layout_constraintStart_toStartOf="parent"
