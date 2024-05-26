@@ -84,7 +84,6 @@ class TransactionsListAdapter(
             val category = viewModel.getCategoryById(curTransactionItem.categoryId)
             val iconId = ResourcesUtil.getResourceIdByName(holder.itemView.context, category!!.icon)
             val drawable = ContextCompat.getDrawable(holder.itemView.context, iconId)
-            categoryIcon.setImageDrawable(drawable)
             withContext(Dispatchers.Main) {
                 categoryText.text = category.name
                 categoryIcon.setImageDrawable(drawable)

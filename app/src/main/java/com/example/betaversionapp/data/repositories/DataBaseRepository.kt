@@ -8,7 +8,6 @@ class DataBaseRepository(
 ) {
     suspend fun upsert(transaction: Transaction) = db.getTransactionDao().upsert(transaction)
     suspend fun delete(transaction: Transaction) = db.getTransactionDao().delete(transaction)
-    suspend fun getTransactionById(transactionId: Long) = db.getTransactionDao().getTransactionById(transactionId)
     fun getTotalAmount() = db.getTransactionDao().getTotalAmount()
     fun getAllTransactions() = db.getTransactionDao().getAllTransactions()
     fun getTransactionsByCategory(categoryId: Long) = db.getTransactionDao().getTransactionsByCategory(categoryId)
