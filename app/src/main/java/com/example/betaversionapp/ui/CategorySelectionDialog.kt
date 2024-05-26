@@ -13,8 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.entities.Category
-import com.example.betaversionapp.data.repositories.DataBaseRepository
-import com.example.betaversionapp.other.CategoryGridAdapter
+import com.example.betaversionapp.data.db.DataBaseRepository
+import com.example.betaversionapp.ui.adapters.CategoryGridAdapter
 import kotlinx.coroutines.launch
 
 class CategorySelectionDialog : DialogFragment() {

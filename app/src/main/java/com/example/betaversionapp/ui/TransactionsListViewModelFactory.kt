@@ -2,7 +2,7 @@ package com.example.betaversionapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.betaversionapp.data.repositories.DataBaseRepository
+import com.example.betaversionapp.data.db.DataBaseRepository
 
 @Suppress("UNCHECKED_CAST")
 class TransactionsListViewModelFactory(

@@ -1,12 +1,9 @@
 package com.example.betaversionapp.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
-import com.example.betaversionapp.data.repositories.DataBaseRepository
+import com.example.betaversionapp.data.db.DataBaseRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

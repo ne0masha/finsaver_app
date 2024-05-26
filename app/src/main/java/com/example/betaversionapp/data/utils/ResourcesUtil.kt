@@ -1,4 +1,4 @@
-package com.example.betaversionapp.data.db
+package com.example.betaversionapp.data.utils
 
 import android.content.Context
 

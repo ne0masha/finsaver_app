@@ -1,4 +1,4 @@
-package com.example.betaversionapp.other
+package com.example.betaversionapp.ui.adapters
 
 
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.betaversionapp.R
-import com.example.betaversionapp.data.db.DateConverter
-import com.example.betaversionapp.data.db.ResourcesUtil
+import com.example.betaversionapp.data.utils.DateConverter
+import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Transaction
 import com.example.betaversionapp.ui.TransactionUpsertDialog
 import com.example.betaversionapp.ui.TransactionsListViewModel

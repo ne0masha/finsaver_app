@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -14,11 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.setFragmentResultListener
-import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
-import com.example.betaversionapp.data.db.DateConverter
-import com.example.betaversionapp.data.db.ResourcesUtil
+import com.example.betaversionapp.data.utils.DateConverter
+import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
 import java.util.Calendar

@@ -1,4 +1,4 @@
-package com.example.betaversionapp.data.repositories
+package com.example.betaversionapp.data.db
 
 import com.example.betaversionapp.data.db.AppDatabase
 import com.example.betaversionapp.data.db.entities.Transaction

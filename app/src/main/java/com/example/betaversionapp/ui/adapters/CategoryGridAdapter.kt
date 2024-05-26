@@ -1,4 +1,4 @@
-package com.example.betaversionapp.other
+package com.example.betaversionapp.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.betaversionapp.R
-import com.example.betaversionapp.data.db.ResourcesUtil
+import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Category
 
 class CategoryGridAdapter(
