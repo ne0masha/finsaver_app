@@ -1,4 +1,4 @@
-package com.example.betaversionapp.data.db
+package com.example.betaversionapp.data.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

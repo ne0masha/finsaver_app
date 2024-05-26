@@ -5,7 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.betaversionapp.R
+import com.example.betaversionapp.data.db.dao.CategoryDao
+import com.example.betaversionapp.data.db.dao.TransactionDao
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
 import kotlinx.coroutines.CoroutineScope
