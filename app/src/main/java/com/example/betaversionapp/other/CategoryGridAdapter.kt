@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Category
-import com.example.betaversionapp.data.repositories.TransactionsListRepository
 
 class CategoryGridAdapter(
     private val context: Context,

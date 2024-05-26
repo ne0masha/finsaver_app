@@ -31,7 +31,7 @@ class TransactionUpsertDialog(
 ): AppCompatDialog(activity), CategorySelectionDialog.CategorySelectionListener {
     private var dateInput: EditText? = null
     private var amountInput: EditText? = null
-    private var selectedCategoryId: Long? = null // Создаем поле для хранения ID выбранной категории
+    private var selectedCategoryId: Long = 0 // Создаем поле для хранения ID выбранной категории
     private var categoryText: TextView? = null
     private var categoryImage: ImageView? = null
     //private val appDelegate = context.applicationContext as? AppDelegate
@@ -123,12 +123,13 @@ class TransactionUpsertDialog(
             if (isInputValid(amountInput)) {
                 if (transaction == null) {
                     // Создание новой транзакции
-                    val item = Transaction(isIncome, 1, date, amount)
+                    val item = Transaction(isIncome, selectedCategoryId, date, amount)
                     upsertDialogListener.onAddButtonClicked(item)
                 } else {
                     // Обновление существующей транзакции
                     transaction?.let {
                         it.isIncome = isIncome
+                        it.categoryId = selectedCategoryId
                         it.date = date
                         it.amount = amount
                         upsertDialogListener.onAddButtonClicked(it)
@@ -165,6 +166,8 @@ class TransactionUpsertDialog(
     }
 
     private fun isInputValid(amountInput: EditText?): Boolean {
-        return amountInput?.text.toString().isNotEmpty() && amountInput?.text.toString().toDoubleOrNull() != null
+        return amountInput?.text.toString().isNotEmpty() &&
+                amountInput?.text.toString().toDoubleOrNull() != null &&
+            selectedCategoryId != 0L
     }
 }

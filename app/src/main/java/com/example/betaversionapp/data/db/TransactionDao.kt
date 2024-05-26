@@ -14,9 +14,6 @@ interface TransactionDao {
     @Delete
     suspend fun delete(transaction: Transaction)
 
-    @Query("SELECT * FROM transactions WHERE id = :transactionId")
-    suspend fun getTransactionById(transactionId: Long): Transaction?
-
     @Query("SELECT COALESCE(SUM(CASE WHEN is_income = 1 THEN amount ELSE -amount END), 0) FROM transactions")
     fun getTotalAmount(): LiveData<Long>?
 

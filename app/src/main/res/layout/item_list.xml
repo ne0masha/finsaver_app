@@ -17,6 +17,7 @@
 
     <!--Иконка категории-->
     <ImageView
+        android:id="@+id/categoryIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center_vertical"
@@ -26,7 +27,7 @@
 
     <!-- Category TextView -->
     <TextView
-        android:id="@+id/textCategory"
+        android:id="@+id/categoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Category"

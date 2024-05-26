@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.entities.Category
-import com.example.betaversionapp.data.repositories.TransactionsListRepository
+import com.example.betaversionapp.data.repositories.DataBaseRepository
 import com.example.betaversionapp.other.CategoryGridAdapter
 import kotlinx.coroutines.launch
 
@@ -25,7 +25,7 @@ class CategorySelectionDialog : DialogFragment() {
 
     var listener: CategorySelectionListener? = null
     private var isIncome: Boolean = false
-    private lateinit var repository: TransactionsListRepository
+    private lateinit var repository: DataBaseRepository
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
