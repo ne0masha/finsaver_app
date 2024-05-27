@@ -17,14 +17,15 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        loadFragment(TransactionsListFragment()) // Load the default fragment
+        val viewModel = (application as AppDelegate).viewModel
+        loadFragment(TransactionsListFragment(viewModel)) // Load the default fragment
 
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         navView.selectedItemId = R.id.list_screen_btn
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list_screen_btn -> {
-                    loadFragment(TransactionsListFragment())
+                    loadFragment(TransactionsListFragment(viewModel))
                     true
                 }
                 R.id.pie_screen_btn -> {
@@ -41,9 +42,7 @@ class MainActivity: AppCompatActivity() {
             }
         }
 
-        val appDelegate = application as AppDelegate
-        val factory = TransactionsListViewModelFactory(appDelegate.repository)
-        val viewModel = ViewModelProvider(this, factory)[TransactionsListViewModel::class.java]
+
         val addExpenseButton = findViewById<Button>(R.id.addExpenseButton)
         val addIncomeButton = findViewById<Button>(R.id.addIncomeButton)
         val totalAmountTextView = findViewById<TextView>(R.id.totalSummaTextView)
@@ -55,6 +54,7 @@ class MainActivity: AppCompatActivity() {
         addExpenseButton.setOnClickListener {
             TransactionUpsertDialog(
                 this,
+                viewModel,
                 object : UpsertDialogListener {
                     override fun onAddButtonClicked(item: Transaction) {
                         viewModel.upsert(item)
@@ -68,6 +68,7 @@ class MainActivity: AppCompatActivity() {
         addIncomeButton.setOnClickListener {
             TransactionUpsertDialog(
                 this,
+                viewModel,
                 object : UpsertDialogListener {
                     override fun onAddButtonClicked(item: Transaction) {
                         viewModel.upsert(item)

@@ -43,6 +43,7 @@ class TransactionsListAdapter(
         holder.itemView.setOnClickListener {
             TransactionUpsertDialog(
                 activity, // Updated to use activity context
+                viewModel,
                 object : UpsertDialogListener {
                     override fun onAddButtonClicked(item: Transaction) {
                         viewModel.upsert(curTransactionItem)
