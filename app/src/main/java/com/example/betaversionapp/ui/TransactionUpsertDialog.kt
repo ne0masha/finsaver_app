@@ -13,29 +13,34 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.utils.DateConverter
 import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 
 class TransactionUpsertDialog(
     activity: AppCompatActivity,
+    private val viewModel: TransactionsListViewModel,
     private var upsertDialogListener: UpsertDialogListener,
     private var transaction: Transaction?,
     private var isIncome: Boolean
 ): AppCompatDialog(activity), CategorySelectionDialog.CategorySelectionListener {
     private var dateInput: EditText? = null
     private var amountInput: EditText? = null
-    private var selectedCategoryId: Long = 0 // Создаем поле для хранения ID выбранной категории
+    private var selectedCategoryId: Long = 0
     private var categoryText: TextView? = null
     private var categoryImage: ImageView? = null
-    //private val appDelegate = context.applicationContext as? AppDelegate
     private val activityContext = activity
 
     override fun onCategorySelected(category: Category) {
-        // Сохраняем ID выбранной категории
         selectedCategoryId = category.id
         categoryText?.text = category.name
         val iconId = ResourcesUtil.getResourceIdByName(activityContext, category.icon)
@@ -58,16 +63,6 @@ class TransactionUpsertDialog(
         val saveButton = findViewById<Button>(R.id.save_button)
         val categoryButton = findViewById<LinearLayout>(R.id.CategoryButton)
 
-        categoryButton?.setOnClickListener {
-            val dialog = CategorySelectionDialog.newInstance(isIncome)
-            dialog.show(activityContext.supportFragmentManager, "CategorySelectionDialog")
-            activityContext.supportFragmentManager.executePendingTransactions() // Обязательное безопасное ожидание завершения транзакции
-            dialog.listener = this // Назначить слушателя
-
-        }
-
-
-        // Заполнение полей данными транзакции, если она передана
         transaction?.let { fillFieldsWithData(it) }
 
         if (transaction == null) {
@@ -84,15 +79,13 @@ class TransactionUpsertDialog(
         }
 
 
-        amountInput?.addTextChangedListener(/* watcher = */ object : TextWatcher {
+        amountInput?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // No action needed before text changed
             }
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 // No action needed on text changed
             }
-
             override fun afterTextChanged(s: Editable) {
                 val str = s.toString()
                 val position = str.indexOf(".")
@@ -103,13 +96,20 @@ class TransactionUpsertDialog(
                         s.delete(
                             s.length - 1,
                             s.length
-                        ) // удаляем последний символ, если условие выполняется
+                        )
                     }
                 }
             }
         })
 
         dateInput?.setOnClickListener { showDatePicker() }
+
+        categoryButton?.setOnClickListener {
+            val dialog = CategorySelectionDialog.newInstance(isIncome)
+            dialog.show(activityContext.supportFragmentManager, "CategorySelectionDialog")
+            activityContext.supportFragmentManager.executePendingTransactions()
+            dialog.listener = this
+        }
 
         saveButton?.setOnClickListener {
             val date = DateConverter.dateToLong(dateInput?.text.toString())
@@ -145,6 +145,20 @@ class TransactionUpsertDialog(
     private fun fillFieldsWithData(transaction: Transaction) {
         dateInput?.setText(DateConverter.longToDate(transaction.date))
         amountInput?.setText(String.format("%.2f", transaction.amount / 100.0))
+
+        selectedCategoryId = transaction.categoryId
+        CoroutineScope(Dispatchers.IO).launch {
+            val category = viewModel.getCategoryById(transaction.categoryId)
+            category?.let {
+                val iconId = ResourcesUtil.getResourceIdByName(activityContext, it.icon)
+                val drawable = ContextCompat.getDrawable(activityContext, iconId)
+
+                withContext(Dispatchers.Main) {
+                    categoryText?.text = it.name
+                    categoryImage?.setImageDrawable(drawable)
+                }
+            }
+        }
     }
 
     private fun showDatePicker() {
@@ -165,6 +179,6 @@ class TransactionUpsertDialog(
     private fun isInputValid(amountInput: EditText?): Boolean {
         return amountInput?.text.toString().isNotEmpty() &&
                 amountInput?.text.toString().toDoubleOrNull() != null &&
-            selectedCategoryId != 0L
+                selectedCategoryId != 0L
     }
 }
