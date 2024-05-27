@@ -39,7 +39,7 @@
                     android:id="@+id/totalBalanceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/total_amount:"
+                    android:text="@string/total_amount"
                     android:textColor="@color/white"
                     android:textSize="12dp" />
 
@@ -63,7 +63,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/totalBalanceContainer"
-            app:layout_constraintBottom_toTopOf="@+id/addButtonsContainer">
+            app:layout_constraintBottom_toTopOf="@+id/addButtonsContainer"
+            android:background="@color/transluent">
         </FrameLayout>
 
         <!-- Контейнер для кнопок -->

@@ -8,10 +8,9 @@
     <string name="choose_category_header">ВЫБЕРИТЕ КАТЕГОРИЮ</string>
     <string name="save_button">СОХРАНИТЬ</string>
     <string name="total_amount">Общая сумма</string>
-
     <string name="category">КАТЕГОРИЯ</string>
     <string name="placeholder_choosen_category">Выбранная категория</string>
-    <string name="cancel_button">Отменить</string>
+    <string name="cancel_button">ОТМЕНИТЬ</string>
     <string name="operations_history">История операций</string>
     <string name="amount">СУММА</string>
     <string name="date">ДАТА</string>
