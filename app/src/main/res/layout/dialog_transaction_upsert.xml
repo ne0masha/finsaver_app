@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="СУММА"
+            android:text="@string/amount"
             android:textColor="@color/white"
             android:textSize="12dp"
             />
@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ДАТА"
+            android:text="@string/date"
             android:textColor="@color/white"
             android:textSize="10dp" />
 
@@ -120,7 +120,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="КАТЕГОРИЯ"
+            android:text="@string/category"
             android:textColor="@color/white"
             android:textSize="10dp" />
 
@@ -147,7 +147,7 @@
                 android:id="@+id/textCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Выбранная категория"
+                android:text="@string/placeholder_choosen_category"
                 android:textColor="@color/white"
                 />
         </LinearLayout>
@@ -175,7 +175,7 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
-            android:text="ОТМЕНИТЬ"
+            android:text="@string/cancel_button"
             android:textColor="@color/red_text"
             android:textSize="10dp"
             android:textStyle="bold" />
@@ -187,7 +187,7 @@
             android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
-            android:text="СОХРАНИТЬ"
+            android:text="@string/save_button"
             android:textColor="@color/green_text"
             android:textSize="10dp"
             android:textStyle="bold" />

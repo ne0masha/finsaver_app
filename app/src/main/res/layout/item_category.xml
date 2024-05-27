@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:layout_marginBottom="20dp"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/category_selector">
 
     <ImageView
         android:id="@+id/category_icon"

@@ -20,7 +20,7 @@
         android:id="@+id/HeaderCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ВЫБЕРИТЕ КАТЕГОРИЮ"
+        android:text="@string/choose_category_header"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintVertical_bias="0.5"
@@ -59,7 +59,7 @@
         android:paddingStart="40dp"
         android:paddingEnd="40dp"
         android:backgroundTint="@color/white"
-        android:text="СОХРАНИТЬ"
+        android:text="@string/save_button"
         android:textColor="@color/green_text"
         android:textSize="10dp"
         android:textStyle="bold"/>

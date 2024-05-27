@@ -2,18 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/pie_screen_btn"
-        android:title="Категории"
+        android:title="@string/toolbar_categories"
         android:icon="@drawable/pie_chart"
-        
         />
     <item
         android:id="@+id/list_screen_btn"
-        android:title="Операции"
+        android:title="@string/toolbar_operations"
         android:icon="@drawable/homepage"
         />
     <item
         android:id="@+id/plot_screen_btn"
-        android:title="Обзор"
+        android:title="@string/toolbar_overview"
         android:icon="@drawable/line_chart"
         />
 </menu>
