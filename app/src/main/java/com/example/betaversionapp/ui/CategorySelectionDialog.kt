@@ -55,11 +55,11 @@ class CategorySelectionDialog : DialogFragment() {
             gridView.setOnItemClickListener { _, _, position, _ ->
                 val selectedCategory = categories[position]
                 listener?.onCategorySelected(selectedCategory)
-                //dismiss()
+                dismiss()
             }
         }
 
-        view.findViewById<Button>(R.id.SaveCategoryButton).setOnClickListener { dismiss() }
+        //view.findViewById<Button>(R.id.SaveCategoryButton).setOnClickListener { dismiss() }
 
         return view
     }
