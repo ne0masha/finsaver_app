@@ -6,22 +6,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.GridView
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
-import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.DataBaseRepository
 import com.example.betaversionapp.ui.adapters.CategoryGridAdapter
+import com.example.betaversionapp.ui.listeners.CategorySelectionListener
 import kotlinx.coroutines.launch
 
 class CategorySelectionDialog : DialogFragment() {
 
-    interface CategorySelectionListener {
-        fun onCategorySelected(category: Category)
-    }
 
     var listener: CategorySelectionListener? = null
     private var isIncome: Boolean = false
