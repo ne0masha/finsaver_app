@@ -14,6 +14,7 @@
     <string name="operations_history">История операций</string>
     <string name="amount">СУММА</string>
     <string name="date">ДАТА</string>
+    <string name="pie_graph_header">График по категориям</string>
 
 
 </resources>

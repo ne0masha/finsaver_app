@@ -32,7 +32,9 @@ class PieChartFragment : Fragment(R.layout.fragment_pie){
         }
 
         pie.data(dataEntries)
-        pie.title("Salary")
+        //pie.title("График по категориям")
         anyChartView.setChart(pie)
+        pie.background("#292929")
+
     }
 }
