@@ -13,13 +13,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.utils.DateConverter
 import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
+import com.example.betaversionapp.ui.listeners.CategorySelectionListener
+import com.example.betaversionapp.ui.listeners.UpsertDialogListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +32,7 @@ class TransactionUpsertDialog(
     private var upsertDialogListener: UpsertDialogListener,
     private var transaction: Transaction?,
     private var isIncome: Boolean
-): AppCompatDialog(activity), CategorySelectionDialog.CategorySelectionListener {
+): AppCompatDialog(activity), CategorySelectionListener {
     private var dateInput: EditText? = null
     private var amountInput: EditText? = null
     private var selectedCategoryId: Long = 0

@@ -1,4 +1,4 @@
-package com.example.betaversionapp.ui
+package com.example.betaversionapp.ui.listeners
 
 import com.example.betaversionapp.data.db.entities.Transaction
 

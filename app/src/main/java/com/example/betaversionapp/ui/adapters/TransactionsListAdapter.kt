@@ -16,7 +16,7 @@ import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Transaction
 import com.example.betaversionapp.ui.TransactionUpsertDialog
 import com.example.betaversionapp.ui.TransactionsListViewModel
-import com.example.betaversionapp.ui.UpsertDialogListener
+import com.example.betaversionapp.ui.listeners.UpsertDialogListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
