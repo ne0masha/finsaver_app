@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.entities.Transaction
+import com.example.yourapp.ui.PieChartFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity: AppCompatActivity() {
