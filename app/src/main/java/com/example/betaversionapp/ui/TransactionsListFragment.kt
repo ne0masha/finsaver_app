@@ -21,7 +21,6 @@ class TransactionsListFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Use requireActivity() to get the parent activity
         val adapter = TransactionsListAdapter(requireActivity() as AppCompatActivity, emptyList(), viewModel)
 
         val operationsRecyclerView = view.findViewById<RecyclerView>(R.id.operationsRecyclerView)

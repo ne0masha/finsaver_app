@@ -2,7 +2,6 @@ package com.example.betaversionapp.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -38,7 +37,6 @@ class MainActivity: AppCompatActivity() {
                     Log.d("btn", "toast should be showed")
                     true
                 }
-                // Add cases for other fragments if needed
                 else -> false
             }
         }

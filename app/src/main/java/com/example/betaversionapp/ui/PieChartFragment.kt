@@ -1,15 +1,9 @@
 package com.example.betaversionapp.ui
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.map
 import com.anychart.APIlib
 import com.anychart.AnyChart
 import com.anychart.AnyChartView
@@ -27,31 +21,25 @@ class PieChartFragment(
 
     private lateinit var anyChartView: AnyChartView
     private lateinit var btn: TextView
-    private val pie = AnyChart.pie()
-    private var isIncomePie = false
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         anyChartView = view.findViewById(R.id.pie_chart)
-
+        val pie = AnyChart.pie()
+        var isIncomePie = false
         pie.background("#292929")
+        updatePieData(pie, isIncomePie)
         anyChartView.setChart(pie)
         APIlib.getInstance().setActiveAnyChartView(anyChartView)
-        updatePieData(isIncomePie, pie)
 
         btn = view.findViewById(R.id.pie_chart_title)
         btn.setOnClickListener {
             isIncomePie = !isIncomePie
-            updatePieData(isIncomePie, pie)
+            updatePieData(pie, isIncomePie)
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        anyChartView.clear()
-    }
-
-    private fun updatePieData(isIncomePie: Boolean, pie: Pie) {
+    private fun updatePieData(pie: Pie, isIncomePie: Boolean) {
         lifecycleScope.launch {
             val dataEntries: MutableList<DataEntry> = withContext(Dispatchers.IO) {
                 val entries: MutableList<DataEntry> = ArrayList()
@@ -74,5 +62,10 @@ class PieChartFragment(
             }
             pie.data(dataEntries)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        anyChartView.clear()
     }
 }
