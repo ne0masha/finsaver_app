@@ -1,40 +1,78 @@
-package com.example.yourapp.ui
+package com.example.betaversionapp.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.map
+import com.anychart.APIlib
 import com.anychart.AnyChart
 import com.anychart.AnyChartView
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Pie
-import com.anychart.data.View
 import com.example.betaversionapp.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class PieChartFragment : Fragment(R.layout.fragment_pie){
+class PieChartFragment(
+    private val viewModel: TransactionsListViewModel
+) : Fragment(R.layout.fragment_pie){
 
     private lateinit var anyChartView: AnyChartView
-    private val months = arrayOf("January", "February", "March", "April")
-    private val salary = intArrayOf(16000, 20000, 30000, 50000)
+    private lateinit var btn: TextView
+    private val pie = AnyChart.pie()
+    private var isIncomePie = false
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         anyChartView = view.findViewById(R.id.pie_chart)
-        setupChartView()
+
+        pie.background("#292929")
+        anyChartView.setChart(pie)
+        APIlib.getInstance().setActiveAnyChartView(anyChartView)
+        updatePieData(isIncomePie, pie)
+
+        btn = view.findViewById(R.id.pie_chart_title)
+        btn.setOnClickListener {
+            isIncomePie = !isIncomePie
+            updatePieData(isIncomePie, pie)
+        }
     }
 
-    private fun setupChartView() {
-        val pie = AnyChart.pie()
-        val dataEntries: MutableList<DataEntry> = ArrayList()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        anyChartView.clear()
+    }
 
-        for (i in months.indices) {
-            dataEntries.add(ValueDataEntry(months[i], salary[i]))
+    private fun updatePieData(isIncomePie: Boolean, pie: Pie) {
+        lifecycleScope.launch {
+            val dataEntries: MutableList<DataEntry> = withContext(Dispatchers.IO) {
+                val entries: MutableList<DataEntry> = ArrayList()
+                val idRange = if (isIncomePie) {
+                    (1..3).map { it.toLong() } // id категорий доходов
+                } else {
+                    (4..14).map { it.toLong() } // id категорий расходов
+                }
+                idRange.forEach { id ->
+                    val categoryName = viewModel.getCategoryById(id)?.name
+                    val sum = viewModel.getSumByCategoryId(id)
+                    if (sum != null) {
+                        entries.add(ValueDataEntry(categoryName.toString(), sum))
+                    }
+                }
+                entries
+            }
+            if (dataEntries.isEmpty()) {
+                dataEntries.add(ValueDataEntry("", 0))
+            }
+            pie.data(dataEntries)
         }
-
-        pie.data(dataEntries)
-        //pie.title("График по категориям")
-        anyChartView.setChart(pie)
-        pie.background("#292929")
-
     }
 }

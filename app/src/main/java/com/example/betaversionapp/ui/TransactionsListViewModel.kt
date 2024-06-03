@@ -1,5 +1,6 @@
 package com.example.betaversionapp.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
@@ -26,5 +27,6 @@ class TransactionsListViewModel(
 
     suspend fun getCategoryById(categoryId: Long): Category? = repository.getCategoryById(categoryId)
 
+    suspend fun getSumByCategoryId(categoryId: Long): Long? = repository.getSumByCategoryId(categoryId)
 }
 

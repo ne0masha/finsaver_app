@@ -2,6 +2,7 @@ package com.example.betaversionapp.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -10,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.example.betaversionapp.AppDelegate
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.entities.Transaction
-import com.example.yourapp.ui.PieChartFragment
 import com.example.betaversionapp.ui.listeners.UpsertDialogListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -30,7 +30,7 @@ class MainActivity: AppCompatActivity() {
                     true
                 }
                 R.id.pie_screen_btn -> {
-                    loadFragment(PieChartFragment())
+                    loadFragment(PieChartFragment(viewModel))
                     true
                 }
                 R.id.plot_screen_btn -> {
