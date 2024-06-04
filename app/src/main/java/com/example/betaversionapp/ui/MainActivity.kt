@@ -24,25 +24,16 @@ class MainActivity: AppCompatActivity() {
 
 
 
-        var addBtnsContainer: LinearLayout = findViewById(R.id.addButtonsContainer)
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         navView.selectedItemId = R.id.list_screen_btn
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list_screen_btn -> {
-                    val params = addBtnsContainer.layoutParams
-                    params.width = ViewGroup.LayoutParams.MATCH_PARENT
-                    params.height = resources.getDimensionPixelSize(R.dimen.fifty_dp)
-                    addBtnsContainer.layoutParams = params
                     navView.menu.findItem(R.id.pie_screen_btn).isEnabled = true
                     loadFragment(TransactionsListFragment(viewModel))
                     true
                 }
                 R.id.pie_screen_btn -> {
-                    val params = addBtnsContainer.layoutParams
-                    params.width = 0
-                    params.height = 0
-                    addBtnsContainer.layoutParams = params
                     item.isEnabled = false
                     loadFragment(PieChartFragment(viewModel))
                     true
@@ -57,43 +48,13 @@ class MainActivity: AppCompatActivity() {
             }
         }
 
-        val addExpenseButton = findViewById<Button>(R.id.addExpenseButton)
-        val addIncomeButton = findViewById<Button>(R.id.addIncomeButton)
         val totalAmountTextView = findViewById<TextView>(R.id.totalSummaTextView)
 
         viewModel.getTotalAmount()?.observe(this) { totalAmount ->
             totalAmountTextView.text = "${String.format("%.2f", totalAmount / 100.0)} $"
         }
 
-        addExpenseButton.setOnClickListener {
-            TransactionUpsertDialog(
-                this,
-                viewModel,
-                object : UpsertDialogListener {
-                    override fun onAddButtonClicked(item: Transaction) {
-                        viewModel.upsert(item)
-                    }
-                },
-                null,
-                false
-            ).show()
-        }
-
-        addIncomeButton.setOnClickListener {
-            TransactionUpsertDialog(
-                this,
-                viewModel,
-                object : UpsertDialogListener {
-                    override fun onAddButtonClicked(item: Transaction) {
-                        viewModel.upsert(item)
-                    }
-                },
-                null,
-                true
-            ).show()
-        }
     }
-
 
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_holder, fragment).commit()
