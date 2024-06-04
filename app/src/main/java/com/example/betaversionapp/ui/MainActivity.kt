@@ -25,12 +25,15 @@ class MainActivity: AppCompatActivity() {
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list_screen_btn -> {
+                    navView.menu.findItem(R.id.pie_screen_btn).isEnabled = true
                     loadFragment(TransactionsListFragment(viewModel))
                     true
                 }
                 R.id.pie_screen_btn -> {
+                    item.isEnabled = false
                     loadFragment(PieChartFragment(viewModel))
                     true
+
                 }
                 R.id.plot_screen_btn -> {
                     Toast.makeText(this, "The screen is still building, keep scrolling", Toast.LENGTH_SHORT).show()
