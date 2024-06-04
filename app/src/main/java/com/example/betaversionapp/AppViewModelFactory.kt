@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.betaversionapp.data.db.DataBaseRepository
 
 @Suppress("UNCHECKED_CAST")
-class ApptViewModelFactory(
+class AppViewModelFactory(
     private val repository: DataBaseRepository
 ): ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return ApptViewModel(repository) as T
+        return AppViewModel(repository) as T
     }
 }

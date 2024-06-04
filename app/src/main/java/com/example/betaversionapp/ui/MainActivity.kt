@@ -2,24 +2,19 @@ package com.example.betaversionapp.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.betaversionapp.AppDelegate
+import com.example.betaversionapp.AppInit
 import com.example.betaversionapp.R
-import com.example.betaversionapp.data.db.entities.Transaction
-import com.example.betaversionapp.ui.listeners.UpsertDialogListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        val viewModel = (application as AppDelegate).viewModel
+        val viewModel = (application as AppInit).viewModel
         loadFragment(TransactionsListFragment(viewModel)) // Load the default fragment
 
 

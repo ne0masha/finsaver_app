@@ -4,10 +4,10 @@ import android.app.Application
 import com.example.betaversionapp.data.db.AppDatabase
 import com.example.betaversionapp.data.db.DataBaseRepository
 
-class AppDelegate : Application() {
+class AppInit : Application() {
     val database: AppDatabase by lazy { AppDatabase(this) }
     val repository: DataBaseRepository by lazy { DataBaseRepository(database) }
-    val viewModel: ApptViewModel by lazy {
-        ApptViewModelFactory(repository).create(ApptViewModel::class.java)
+    val viewModel: AppViewModel by lazy {
+        AppViewModelFactory(repository).create(AppViewModel::class.java)
     }
 }

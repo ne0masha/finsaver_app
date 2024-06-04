@@ -15,7 +15,7 @@ import com.example.betaversionapp.data.utils.DateConverter
 import com.example.betaversionapp.data.utils.ResourcesUtil
 import com.example.betaversionapp.data.db.entities.Transaction
 import com.example.betaversionapp.ui.TransactionUpsertDialog
-import com.example.betaversionapp.ApptViewModel
+import com.example.betaversionapp.AppViewModel
 import com.example.betaversionapp.ui.listeners.UpsertDialogListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 class TransactionsListAdapter(
     private val activity: AppCompatActivity, // Updated to receive AppCompatActivity
     var items: List<Transaction>,
-    private val viewModel: ApptViewModel
+    private val viewModel: AppViewModel
 ): RecyclerView.Adapter<TransactionsListAdapter.TransactionsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionsViewHolder {
