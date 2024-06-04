@@ -17,12 +17,14 @@ interface TransactionDao {
     @Query("SELECT COALESCE(SUM(CASE WHEN is_income = 1 THEN amount ELSE -amount END), 0) FROM transactions")
     fun getTotalAmount(): LiveData<Long>?
 
-    @Query("SELECT * FROM transactions ORDER BY date_Long DESC")
+    @Query("SELECT * FROM transactions ORDER BY date_Long DESC, id DESC")
     fun getAllTransactions(): LiveData<List<Transaction>>?
 
-    @Query("SELECT * FROM transactions WHERE id = :categoryId ORDER BY date_Long DESC")
+    @Query("SELECT * FROM transactions WHERE id = :categoryId ORDER BY date_Long DESC, id DESC")
     fun getTransactionsByCategory(categoryId: Long): LiveData<List<Transaction>>?
 
     @Query("SELECT SUM(amount) FROM transactions WHERE category_id = :categoryId")
     suspend fun getSumByCategoryId(categoryId: Long): Long?
+    @Query("SELECT * FROM transactions WHERE is_income = :isIncome ORDER BY date_Long DESC, id DESC")
+    fun getTransactionsByIsIncome(isIncome: Boolean): LiveData<List<Transaction>>?
 }
