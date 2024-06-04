@@ -21,5 +21,6 @@
     <color name="selected_color">#a3a3a3</color>
     <color name="category_on_pressed">#141414</color>
     <color name="category_on_selected">#313131</color>
+    <color name="pie_button_on_pressed">#12712B</color>
 </resources>
 
