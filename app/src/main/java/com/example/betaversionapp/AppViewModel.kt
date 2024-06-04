@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ApptViewModel(
+class AppViewModel(
     private val repository: DataBaseRepository
 ): ViewModel() {
 

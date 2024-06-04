@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
 import androidx.core.content.ContextCompat
-import com.example.betaversionapp.ApptViewModel
+import com.example.betaversionapp.AppViewModel
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.utils.DateConverter
 import com.example.betaversionapp.data.utils.ResourcesUtil
@@ -29,7 +29,7 @@ import java.util.Calendar
 
 class TransactionUpsertDialog(
     activity: AppCompatActivity,
-    private val viewModel: ApptViewModel,
+    private val viewModel: AppViewModel,
     private var upsertDialogListener: UpsertDialogListener,
     private var transaction: Transaction?,
     private var isIncome: Boolean

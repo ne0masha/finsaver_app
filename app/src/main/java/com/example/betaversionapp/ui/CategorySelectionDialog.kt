@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
-import com.example.betaversionapp.AppDelegate
+import com.example.betaversionapp.AppInit
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.DataBaseRepository
 import com.example.betaversionapp.ui.adapters.CategoryGridAdapter
@@ -34,7 +34,7 @@ class CategorySelectionDialog : DialogFragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             isIncome = it.getBoolean(ARG_IS_INCOME)
-            repository = (requireActivity().applicationContext as AppDelegate).repository
+            repository = (requireActivity().applicationContext as AppInit).repository
         }
     }
 

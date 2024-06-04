@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.betaversionapp.ApptViewModel
+import com.example.betaversionapp.AppViewModel
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.entities.Transaction
 import com.example.betaversionapp.ui.adapters.TransactionsListAdapter
@@ -16,7 +16,7 @@ import com.example.betaversionapp.ui.listeners.UpsertDialogListener
 
 
 class TransactionsListFragment(
-    private val viewModel: ApptViewModel
+    private val viewModel: AppViewModel
 ) : Fragment(R.layout.fragment_list) {
 
 
