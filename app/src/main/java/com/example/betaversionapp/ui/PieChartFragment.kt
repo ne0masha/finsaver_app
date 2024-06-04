@@ -40,15 +40,18 @@ class PieChartFragment(
 
         btnExpense.setOnClickListener {
             updatePieData(pie, false) // Показ расходов
+            pieTitle.text = "Ваши расходы" // обновление заголовка
         }
 
         btnIncome.setOnClickListener {
             updatePieData(pie, true) // Показ доходов
+            pieTitle.text = "Ваши доходы" // обновление заголовка
         }
 
         updatePieData(pie, false) // Показываем расходы по умолчанию
         anyChartView.setChart(pie)
         APIlib.getInstance().setActiveAnyChartView(anyChartView)
+        anyChartView.isClickable = false
     }
 
     private fun updatePieData(pie: Pie, isIncomePie: Boolean) {
@@ -73,10 +76,6 @@ class PieChartFragment(
                 dataEntries.add(ValueDataEntry("", 0))
             }
             pie.data(dataEntries)
-
-            // Обновление текста в зависимости от отображаемых данных
-            val titleText = if (isIncomePie) "Ваши доходы" else "Ваши расходы"
-            pieTitle.text = titleText
         }
     }
 
