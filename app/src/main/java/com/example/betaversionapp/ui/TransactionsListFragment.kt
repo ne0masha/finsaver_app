@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.betaversionapp.AppDelegate
+import com.example.betaversionapp.ApptViewModel
 import com.example.betaversionapp.R
 import com.example.betaversionapp.ui.adapters.TransactionsListAdapter
 
 
 class TransactionsListFragment(
-    private val viewModel: TransactionsListViewModel
+    private val viewModel: ApptViewModel
 ) : Fragment(R.layout.fragment_list) {
 
     @SuppressLint("NotifyDataSetChanged")

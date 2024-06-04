@@ -1,6 +1,5 @@
-package com.example.betaversionapp.ui
+package com.example.betaversionapp
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.betaversionapp.data.db.entities.Category
 import com.example.betaversionapp.data.db.entities.Transaction
@@ -9,7 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TransactionsListViewModel(
+class ApptViewModel(
     private val repository: DataBaseRepository
 ): ViewModel() {
 

@@ -1,15 +1,15 @@
-package com.example.betaversionapp.ui
+package com.example.betaversionapp
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.betaversionapp.data.db.DataBaseRepository
 
 @Suppress("UNCHECKED_CAST")
-class TransactionsListViewModelFactory(
+class ApptViewModelFactory(
     private val repository: DataBaseRepository
 ): ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return TransactionsListViewModel(repository) as T
+        return ApptViewModel(repository) as T
     }
 }

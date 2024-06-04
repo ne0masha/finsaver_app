@@ -10,13 +10,14 @@ import com.anychart.AnyChartView
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Pie
+import com.example.betaversionapp.ApptViewModel
 import com.example.betaversionapp.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PieChartFragment(
-    private val viewModel: TransactionsListViewModel
+    private val viewModel: ApptViewModel
 ) : Fragment(R.layout.fragment_pie){
 
     private lateinit var anyChartView: AnyChartView
