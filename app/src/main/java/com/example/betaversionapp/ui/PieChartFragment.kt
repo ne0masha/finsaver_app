@@ -1,6 +1,8 @@
 package com.example.betaversionapp.ui
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -18,26 +20,35 @@ import kotlinx.coroutines.withContext
 
 class PieChartFragment(
     private val viewModel: ApptViewModel
-) : Fragment(R.layout.fragment_pie){
+) : Fragment(R.layout.fragment_pie) {
 
     private lateinit var anyChartView: AnyChartView
-    private lateinit var btn: TextView
+    private lateinit var btnExpense: Button
+    private lateinit var btnIncome: Button
+    private lateinit var pieTitle: TextView
 
-    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         anyChartView = view.findViewById(R.id.pie_chart)
+        pieTitle = view.findViewById(R.id.pie_title) // Инициализация TextView для заголовка
+
         val pie = AnyChart.pie()
-        var isIncomePie = false
         pie.background("#292929")
-        updatePieData(pie, isIncomePie)
+
+        btnExpense = view.findViewById(R.id.pie_button_expense)
+        btnIncome = view.findViewById(R.id.pie_button_income)
+
+        btnExpense.setOnClickListener {
+            updatePieData(pie, false) // Показ расходов
+        }
+
+        btnIncome.setOnClickListener {
+            updatePieData(pie, true) // Показ доходов
+        }
+
+        updatePieData(pie, false) // Показываем расходы по умолчанию
         anyChartView.setChart(pie)
         APIlib.getInstance().setActiveAnyChartView(anyChartView)
-
-        btn = view.findViewById(R.id.pie_chart_title)
-        btn.setOnClickListener {
-            isIncomePie = !isIncomePie
-            updatePieData(pie, isIncomePie)
-        }
     }
 
     private fun updatePieData(pie: Pie, isIncomePie: Boolean) {
@@ -53,7 +64,7 @@ class PieChartFragment(
                     val categoryName = viewModel.getCategoryById(id)?.name
                     val sum = viewModel.getSumByCategoryId(id)
                     if (sum != null) {
-                        entries.add(ValueDataEntry(categoryName.toString(), sum))
+                        entries.add(ValueDataEntry(categoryName ?: "", sum))
                     }
                 }
                 entries
@@ -62,6 +73,10 @@ class PieChartFragment(
                 dataEntries.add(ValueDataEntry("", 0))
             }
             pie.data(dataEntries)
+
+            // Обновление текста в зависимости от отображаемых данных
+            val titleText = if (isIncomePie) "Ваши доходы" else "Ваши расходы"
+            pieTitle.text = titleText
         }
     }
 

@@ -15,6 +15,8 @@
     <string name="amount">СУММА</string>
     <string name="date">ДАТА</string>
     <string name="pie_graph_header">График по категориям</string>
+    <string name="display_income">ПОКАЗАТЬ ДОХОДЫ</string>
+    <string name="display_expense">ПОКАЗАТЬ РАСХОДЫ</string>
 
 
 </resources>
