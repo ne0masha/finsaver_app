@@ -40,6 +40,85 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!--Контейнер для фильтров-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="ВСЕ"
+                android:textSize="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/button_default"
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="РАСХОДЫ"
+                android:textSize="10dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/button_default"
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="ДОХОДЫ"
+                android:textSize="10dp"
+                android:backgroundTint="@color/button_default"/>
+
+
+        </LinearLayout>
+
+        <!--Контейнер для фильтра по категории-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="6dp">
+
+            <!--Иконка-->
+            <ImageView
+                android:id="@+id/iconCategory"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/question_mark"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                />
+
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_choosen_category"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Очистить категорию"
+                android:textColor="@color/white"
+                android:textSize="10dp"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="@color/grey"/>
+
+        </LinearLayout>
+
         <!-- RecyclerView для истории операций -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/operationsRecyclerView"
@@ -59,6 +138,7 @@
         android:id="@+id/addButtonsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
@@ -72,6 +152,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
+
                 android:layout_weight="1"
                 android:backgroundTint="@color/red_button"
                 android:text="@string/expense"
@@ -87,4 +168,5 @@
                 android:text="@string/income"
                 android:textColor="@color/white"/>
         </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
