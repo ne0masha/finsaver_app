@@ -1,3 +1,8 @@
+![image](https://github.com/ne0masha/finsaver_app/assets/144341377/407a3f5b-99ed-42aa-a5bb-fbafe1fc9c8f)
+![image](https://github.com/ne0masha/finsaver_app/assets/144341377/51501735-3d6c-4444-9dbe-2757b96640aa)
+
+![image](https://github.com/ne0masha/finsaver_app/assets/144341377/0ef08244-cb19-465f-a081-1ea5060ebd6b)
+
 ## Описание проекта
 
 Добро пожаловать в мобильное приложение для учёта финансов на языке Kotlin. Это приложение разработано для учёта доходов и расходов, фильтрации данных, анализа по категориям и периодам с использованием круговых и линейных диаграмм.
