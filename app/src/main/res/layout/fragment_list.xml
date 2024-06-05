@@ -50,6 +50,7 @@
             android:layout_marginBottom="20dp">
 
             <Button
+                android:id="@+id/showAllButton"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
@@ -59,6 +60,7 @@
                 android:backgroundTint="@color/button_default"
                 />
             <Button
+                android:id="@+id/showExpensesButton"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
@@ -68,6 +70,7 @@
                 android:backgroundTint="@color/button_default"
                 />
             <Button
+                android:id="@+id/showIncomesButton"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"

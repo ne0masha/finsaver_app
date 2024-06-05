@@ -22,21 +22,50 @@ class TransactionsListFragment(
 
     private lateinit var addExpenseButton: Button
     private lateinit var addIncomeButton: Button
+    private lateinit var showAllButton: Button
+    private lateinit var showIncomesButton: Button
+    private lateinit var showExpensesButton: Button
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         val adapter = TransactionsListAdapter(requireActivity() as AppCompatActivity, emptyList(), viewModel)
-
         val operationsRecyclerView = view.findViewById<RecyclerView>(R.id.operationsRecyclerView)
         operationsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         operationsRecyclerView.adapter = adapter
 
-        viewModel.getAllTransactions()?.observe(viewLifecycleOwner) { transactions ->
-            adapter.items = transactions
-            adapter.notifyDataSetChanged()
+        var showIncome: Boolean? = null
+        showAllButton = view.findViewById(R.id.showAllButton)
+        showIncomesButton = view.findViewById(R.id.showIncomesButton)
+        showExpensesButton = view.findViewById(R.id.showExpensesButton)
+
+        fun updateTransactions(showIncome: Boolean?) {
+            val transactionsLiveData = if (showIncome == null) {
+                viewModel.getAllTransactions()
+            } else {
+                viewModel.getTransactionsByIsIncome(showIncome)
+            }
+
+            transactionsLiveData?.observe(viewLifecycleOwner) { transactions ->
+                adapter.items = transactions
+                adapter.notifyDataSetChanged()
+            }
         }
+        updateTransactions(showIncome)
+
+        showAllButton.setOnClickListener {
+            showIncome = null
+            updateTransactions(showIncome)
+        }
+        showIncomesButton.setOnClickListener {
+            showIncome = true
+            updateTransactions(showIncome)
+        }
+        showExpensesButton.setOnClickListener {
+            showIncome = false
+            updateTransactions(showIncome)
+        }
+
 
         addExpenseButton = view.findViewById(R.id.addExpenseButton)
         addIncomeButton = view.findViewById(R.id.addIncomeButton)
@@ -69,4 +98,5 @@ class TransactionsListFragment(
         }
 
     }
+
 }
