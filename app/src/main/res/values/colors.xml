@@ -11,9 +11,9 @@
     <color name="main_bg">#292929</color>
     <color name="input_field">#3D3D3D</color>
     <color name="input_field_inner_shadow">#222222</color>
-    <color name="green_text">#097300</color>
-    <color name="red_text">#ff3021</color>
-    <color name="list_item_background">#535353</color>
+    <color name="green_text">#075c01</color>
+    <color name="red_text">#9c0d03</color>
+    <color name="list_item_background">#7a7979</color>
     <color name="dim_view">#90FFFFFF</color>
     <color name="transluent">#00FFFFFF</color>
     <color name="bottom_navigation_icon_color">#FFFFFF</color>

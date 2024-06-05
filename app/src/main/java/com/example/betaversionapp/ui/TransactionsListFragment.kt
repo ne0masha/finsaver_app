@@ -63,17 +63,34 @@ class TransactionsListFragment(
 
         updateTransactionsList(showIncome, showCategory)
 
+
+        fun resetButtonStyles() {
+            showAllButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+            showIncomesButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+            showExpensesButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+        }
+
+        fun setSelectedButton(button: Button) {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_pressed))
+        }
+
         showAllButton.setOnClickListener {
             showIncome = null
             updateTransactionsList(showIncome, showCategory)
+            resetButtonStyles()
+            setSelectedButton(showAllButton)
         }
         showIncomesButton.setOnClickListener {
             showIncome = true
             updateTransactionsList(showIncome, showCategory)
+            resetButtonStyles()
+            setSelectedButton(showIncomesButton)
         }
         showExpensesButton.setOnClickListener {
             showIncome = false
             updateTransactionsList(showIncome, showCategory)
+            resetButtonStyles()
+            setSelectedButton(showExpensesButton)
         }
 
         chooseCategoryFilterButton = view.findViewById(R.id.chooseCategoryFilterButton)

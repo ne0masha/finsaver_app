@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.anychart.APIlib
@@ -38,14 +39,27 @@ class PieChartFragment(
         btnExpense = view.findViewById(R.id.pie_button_expense)
         btnIncome = view.findViewById(R.id.pie_button_income)
 
+        fun resetButtonStyles() {
+            btnExpense.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+            btnIncome.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+        }
+
+        fun setSelectedButton(button: Button) {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_pressed))
+        }
+
         btnExpense.setOnClickListener {
             updatePieData(pie, false) // Показ расходов
             pieTitle.text = "Ваши расходы" // обновление заголовка
+            resetButtonStyles()
+            setSelectedButton(btnExpense)
         }
 
         btnIncome.setOnClickListener {
             updatePieData(pie, true) // Показ доходов
             pieTitle.text = "Ваши доходы" // обновление заголовка
+            resetButtonStyles()
+            setSelectedButton(btnIncome)
         }
 
         updatePieData(pie, false) // Показываем расходы по умолчанию
