@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -53,17 +54,34 @@ class TransactionsListFragment(
         }
         updateTransactionsList(showIncome)
 
+
+        fun resetButtonStyles() {
+            showAllButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+            showIncomesButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+            showExpensesButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
+        }
+
+        fun setSelectedButton(button: Button) {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_pressed))
+        }
+
         showAllButton.setOnClickListener {
             showIncome = null
             updateTransactionsList(showIncome)
+            resetButtonStyles()
+            setSelectedButton(showAllButton)
         }
         showIncomesButton.setOnClickListener {
             showIncome = true
             updateTransactionsList(showIncome)
+            resetButtonStyles()
+            setSelectedButton(showIncomesButton)
         }
         showExpensesButton.setOnClickListener {
             showIncome = false
             updateTransactionsList(showIncome)
+            resetButtonStyles()
+            setSelectedButton(showExpensesButton)
         }
 
 
