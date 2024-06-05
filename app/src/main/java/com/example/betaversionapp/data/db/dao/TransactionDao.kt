@@ -20,7 +20,7 @@ interface TransactionDao {
     @Query("SELECT * FROM transactions ORDER BY date_Long DESC, id DESC")
     fun getAllTransactions(): LiveData<List<Transaction>>?
 
-    @Query("SELECT * FROM transactions WHERE id = :categoryId ORDER BY date_Long DESC, id DESC")
+    @Query("SELECT * FROM transactions WHERE category_id = :categoryId ORDER BY date_Long DESC, id DESC")
     fun getTransactionsByCategory(categoryId: Long): LiveData<List<Transaction>>?
 
     @Query("SELECT SUM(amount) FROM transactions WHERE category_id = :categoryId")
