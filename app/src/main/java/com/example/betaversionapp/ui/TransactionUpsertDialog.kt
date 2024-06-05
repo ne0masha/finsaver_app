@@ -71,7 +71,7 @@ class TransactionUpsertDialog(
             val initialYear = calendar.get(Calendar.YEAR)
             val initialMonth = calendar.get(Calendar.MONTH)
             val initialDay = calendar.get(Calendar.DAY_OF_MONTH)
-            val initialDate = "$initialDay.${initialMonth + 1}.$initialYear"
+            val initialDate = String.format("%02d.%02d.%d", initialDay, initialMonth + 1, initialYear)
             dateInput?.setText(initialDate)
 
             categoryText?.setText("Выберите категорию")
@@ -169,7 +169,7 @@ class TransactionUpsertDialog(
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(context, { _, selectedYear, selectedMonth, selectedDay ->
-            val selectedDate = "$selectedDay.${selectedMonth + 1}.$selectedYear"
+            val selectedDate = String.format("%02d.%02d.%d", selectedDay, selectedMonth + 1, selectedYear)
             dateInput?.setText(selectedDate)
         }, year, month, day)
 
