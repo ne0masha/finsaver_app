@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -75,28 +76,41 @@ class TransactionsListFragment(
         }
 
         showAllButton.setOnClickListener {
-            showIncome = null
-            updateTransactionsList(showIncome, showCategory)
-            resetButtonStyles()
-            setSelectedButton(showAllButton)
+            if (showCategory == null) {
+                showIncome = null
+                updateTransactionsList(showIncome, showCategory)
+                resetButtonStyles()
+                setSelectedButton(showAllButton)
+            } else {
+                Toast.makeText(requireContext(), "Очистите фильтр по категориям", Toast.LENGTH_SHORT).show()
+            }
         }
         showIncomesButton.setOnClickListener {
-            showIncome = true
-            updateTransactionsList(showIncome, showCategory)
-            resetButtonStyles()
-            setSelectedButton(showIncomesButton)
+            if (showCategory == null) {
+                showIncome = true
+                updateTransactionsList(showIncome, showCategory)
+                resetButtonStyles()
+                setSelectedButton(showIncomesButton)
+            } else {
+                Toast.makeText(requireContext(), "Очистите фильтр по категориям", Toast.LENGTH_SHORT).show()
+            }
         }
         showExpensesButton.setOnClickListener {
-            showIncome = false
-            updateTransactionsList(showIncome, showCategory)
-            resetButtonStyles()
-            setSelectedButton(showExpensesButton)
+            if (showCategory == null) {
+                showIncome = false
+                updateTransactionsList(showIncome, showCategory)
+                resetButtonStyles()
+                setSelectedButton(showExpensesButton)
+            } else {
+                Toast.makeText(requireContext(), "Очистите фильтр по категориям", Toast.LENGTH_SHORT).show()
+            }
         }
 
         chooseCategoryFilterButton = view.findViewById(R.id.chooseCategoryFilterButton)
         resetCategoryFilterButton = view.findViewById(R.id.resetCategoryFilter)
 
         chooseCategoryFilterButton.setOnClickListener {
+            resetButtonStyles()
             val dialog = CategorySelectionDialog.newInstance(showIncome, viewModel)
             dialog.show(parentFragmentManager, "CategorySelectionDialog")
             parentFragmentManager.executePendingTransactions()

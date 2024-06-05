@@ -34,11 +34,6 @@ class MainActivity: AppCompatActivity() {
                     true
 
                 }
-                R.id.plot_screen_btn -> {
-                    Toast.makeText(this, "The screen is still building, keep scrolling", Toast.LENGTH_SHORT).show()
-                    Log.d("btn", "toast should be showed")
-                    true
-                }
                 else -> false
             }
         }

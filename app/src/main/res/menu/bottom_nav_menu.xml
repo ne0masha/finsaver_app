@@ -10,9 +10,4 @@
         android:title="@string/toolbar_operations"
         android:icon="@drawable/homepage"
         />
-    <item
-        android:id="@+id/plot_screen_btn"
-        android:title="@string/toolbar_overview"
-        android:icon="@drawable/line_chart"
-        />
 </menu>
