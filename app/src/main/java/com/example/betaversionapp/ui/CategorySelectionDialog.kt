@@ -20,7 +20,7 @@ class CategorySelectionDialog : DialogFragment() {
 
 
     var listener: CategorySelectionListener? = null
-    private var isIncome: Boolean = false
+    private var isIncome: Boolean? = null
     private lateinit var repository: DataBaseRepository
 
     override fun onAttach(context: Context) {
@@ -33,7 +33,7 @@ class CategorySelectionDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            isIncome = it.getBoolean(ARG_IS_INCOME)
+            isIncome = if (it.containsKey(ARG_IS_INCOME)) { it.getBoolean(ARG_IS_INCOME) } else { null }
             repository = (requireActivity().applicationContext as AppInit).repository
         }
     }
@@ -44,8 +44,11 @@ class CategorySelectionDialog : DialogFragment() {
         val gridView = view.findViewById<GridView>(R.id.categories_grid)
 
         lifecycleScope.launch {
-            val categories = repository.getCategoryByIsIncome(isIncome)
-            Log.d("10", "${categories.size}")
+            val categories = if (isIncome == null) {
+                repository.getAllCategories()
+            } else {
+                repository.getCategoryByIsIncome(isIncome!!)
+            }
             gridView.adapter = CategoryGridAdapter(requireContext(), categories)
 
             gridView.setOnItemClickListener { _, _, position, _ ->
@@ -55,8 +58,6 @@ class CategorySelectionDialog : DialogFragment() {
             }
         }
 
-        //view.findViewById<Button>(R.id.SaveCategoryButton).setOnClickListener { dismiss() }
-
         return view
     }
 
@@ -64,10 +65,12 @@ class CategorySelectionDialog : DialogFragment() {
         private const val ARG_IS_INCOME = "is_income"
 
         @JvmStatic
-        fun newInstance(isIncome: Boolean): CategorySelectionDialog {
+        fun newInstance(isIncome: Boolean?): CategorySelectionDialog {
             val dialog = CategorySelectionDialog()
             val args = Bundle()
-            args.putBoolean(ARG_IS_INCOME, isIncome)
+            if (isIncome != null) {
+                args.putBoolean(ARG_IS_INCOME, isIncome)
+            }
             dialog.arguments = args
             return dialog
         }
