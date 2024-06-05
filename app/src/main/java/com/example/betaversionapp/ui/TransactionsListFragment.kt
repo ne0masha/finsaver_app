@@ -39,7 +39,7 @@ class TransactionsListFragment(
         showIncomesButton = view.findViewById(R.id.showIncomesButton)
         showExpensesButton = view.findViewById(R.id.showExpensesButton)
 
-        fun updateTransactions(showIncome: Boolean?) {
+        fun updateTransactionsList(showIncome: Boolean?) {
             val transactionsLiveData = if (showIncome == null) {
                 viewModel.getAllTransactions()
             } else {
@@ -51,19 +51,19 @@ class TransactionsListFragment(
                 adapter.notifyDataSetChanged()
             }
         }
-        updateTransactions(showIncome)
+        updateTransactionsList(showIncome)
 
         showAllButton.setOnClickListener {
             showIncome = null
-            updateTransactions(showIncome)
+            updateTransactionsList(showIncome)
         }
         showIncomesButton.setOnClickListener {
             showIncome = true
-            updateTransactions(showIncome)
+            updateTransactionsList(showIncome)
         }
         showExpensesButton.setOnClickListener {
             showIncome = false
-            updateTransactions(showIncome)
+            updateTransactionsList(showIncome)
         }
 
 
