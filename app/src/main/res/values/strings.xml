@@ -9,7 +9,7 @@
     <string name="save_button">СОХРАНИТЬ</string>
     <string name="total_amount">Общая сумма</string>
     <string name="category">КАТЕГОРИЯ</string>
-    <string name="placeholder_choosen_category">Выбранная категория</string>
+    <string name="placeholder_choosen_category">Фильтр по категории</string>
     <string name="cancel_button">ОТМЕНИТЬ</string>
     <string name="operations_history">История операций</string>
     <string name="amount">СУММА</string>
