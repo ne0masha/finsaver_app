@@ -62,9 +62,6 @@ class TransactionsListFragment(
         showExpensesButton = view.findViewById(R.id.showExpensesButton)
 
 
-        updateTransactionsList(showIncome, showCategory)
-
-
         fun resetButtonStyles() {
             showAllButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
             showIncomesButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_default))
@@ -74,6 +71,13 @@ class TransactionsListFragment(
         fun setSelectedButton(button: Button) {
             button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_pressed))
         }
+
+        // Устанавливаем кнопку "Все" выбранной при старте
+        resetButtonStyles()
+        setSelectedButton(showAllButton)
+        showIncome = null
+        updateTransactionsList(showIncome, showCategory)
+
 
         showAllButton.setOnClickListener {
             if (showCategory == null) {
@@ -123,6 +127,7 @@ class TransactionsListFragment(
             textCategoryFilter?.text = getString(R.string.placeholder_choosen_category)
             iconCategoryFilter?.setImageResource(R.drawable.question_mark)
         }
+
 
         addExpenseButton = view.findViewById(R.id.addExpenseButton)
         addIncomeButton = view.findViewById(R.id.addIncomeButton)

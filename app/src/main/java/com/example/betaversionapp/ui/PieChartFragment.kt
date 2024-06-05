@@ -48,6 +48,10 @@ class PieChartFragment(
             button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_pressed))
         }
 
+        // Устанавливаем кнопку "Расходы" выбранной при старте
+        resetButtonStyles()
+        setSelectedButton(btnExpense)
+
         btnExpense.setOnClickListener {
             updatePieData(pie, false) // Показ расходов
             pieTitle.text = "Ваши расходы" // обновление заголовка
