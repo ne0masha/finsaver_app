@@ -106,7 +106,7 @@ class TransactionUpsertDialog(
         dateInput?.setOnClickListener { showDatePicker() }
 
         categoryButton?.setOnClickListener {
-            val dialog = CategorySelectionDialog.newInstance(isIncome)
+            val dialog = CategorySelectionDialog.newInstance(isIncome, viewModel)
             dialog.show(activityContext.supportFragmentManager, "CategorySelectionDialog")
             activityContext.supportFragmentManager.executePendingTransactions()
             dialog.listener = this

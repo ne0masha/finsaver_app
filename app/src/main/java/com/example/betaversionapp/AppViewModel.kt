@@ -29,6 +29,8 @@ class AppViewModel(
     fun getTransactionsByIsIncome(isIncome: Boolean) = repository.getTransactionsByIsIncome(isIncome)
     suspend fun getCategoryById(categoryId: Long): Category? = repository.getCategoryById(categoryId)
 
+    suspend fun getAllCategories() = repository.getAllCategories()
+    suspend fun getCategoryByIsIncome(isIncome: Boolean) = repository.getCategoryByIsIncome(isIncome)
     suspend fun getSumByCategoryId(categoryId: Long): Long? = repository.getSumByCategoryId(categoryId)
 }
 

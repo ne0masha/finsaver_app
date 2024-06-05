@@ -10,18 +10,19 @@ import android.widget.GridView
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.betaversionapp.AppInit
+import com.example.betaversionapp.AppViewModel
 import com.example.betaversionapp.R
 import com.example.betaversionapp.data.db.DataBaseRepository
 import com.example.betaversionapp.ui.adapters.CategoryGridAdapter
 import com.example.betaversionapp.ui.listeners.CategorySelectionListener
 import kotlinx.coroutines.launch
 
-class CategorySelectionDialog : DialogFragment() {
-
+class CategorySelectionDialog(
+    private val isIncome: Boolean?,
+    private val viewModel: AppViewModel
+) : DialogFragment() {
 
     var listener: CategorySelectionListener? = null
-    private var isIncome: Boolean? = null
-    private lateinit var repository: DataBaseRepository
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -30,13 +31,6 @@ class CategorySelectionDialog : DialogFragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            isIncome = if (it.containsKey(ARG_IS_INCOME)) { it.getBoolean(ARG_IS_INCOME) } else { null }
-            repository = (requireActivity().applicationContext as AppInit).repository
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.dialog_category_selection, container, false)
@@ -45,9 +39,9 @@ class CategorySelectionDialog : DialogFragment() {
 
         lifecycleScope.launch {
             val categories = if (isIncome == null) {
-                repository.getAllCategories()
+                viewModel.getAllCategories()
             } else {
-                repository.getCategoryByIsIncome(isIncome!!)
+                viewModel.getCategoryByIsIncome(isIncome)
             }
             gridView.adapter = CategoryGridAdapter(requireContext(), categories)
 
@@ -62,17 +56,9 @@ class CategorySelectionDialog : DialogFragment() {
     }
 
     companion object {
-        private const val ARG_IS_INCOME = "is_income"
-
         @JvmStatic
-        fun newInstance(isIncome: Boolean?): CategorySelectionDialog {
-            val dialog = CategorySelectionDialog()
-            val args = Bundle()
-            if (isIncome != null) {
-                args.putBoolean(ARG_IS_INCOME, isIncome)
-            }
-            dialog.arguments = args
-            return dialog
+        fun newInstance(isIncome: Boolean?, viewModel: AppViewModel): CategorySelectionDialog {
+            return CategorySelectionDialog(isIncome, viewModel)
         }
     }
 }
